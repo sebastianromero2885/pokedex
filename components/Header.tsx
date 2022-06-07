@@ -33,19 +33,44 @@ function Header() {
 
         <Image
           src="https://upload.wikimedia.org/wikipedia/commons/5/53/Pok%C3%A9_Ball_icon.svg"
-          boxSize="80px"
+          boxSize={{
+            base: "60px",
+            sm: "60px",
+            md: "80px",
+            lg: "80px",
+            xl: "80px",
+            "2xl": "80px",
+          }}
           alt="pokebola"
         ></Image>
       </Flex>
 
-      <Text fontSize="1.5rem" align="center" marginTop="10px">
+      <Text
+        fontSize={{
+          base: "1.1rem",
+          sm: "1.5rem",
+          md: "1.5rem",
+          lg: "1.5rem",
+          xl: "1.5rem",
+          "2xl": "1.5rem",
+        }}
+        align="center"
+        marginTop="10px"
+      >
         Buscá tu pokemon favorito y descubrí sus características.
       </Text>
 
       <Flex
         flexDirection="row"
         justifyContent="center"
-        marginTop="40px"
+        marginTop={{
+          base: "10px",
+          sm: "20px",
+          md: "40px",
+          lg: "40px",
+          xl: "40px",
+          "2xl": "40px",
+        }}
         gap="1"
       >
         <Input

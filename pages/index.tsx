@@ -37,7 +37,7 @@ const Home: NextPage = (props) => {
         flexWrap="wrap"
         justifyContent="space-around"
         padding="10px"
-        marginTop="300px"
+        marginTop={ {base: "230px", sm: "300px", md: "300px", lg: "300px", xl: "300px", '2xl':"300px"}}
       >
         {
         pokemon_encontrado
