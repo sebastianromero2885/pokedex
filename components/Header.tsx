@@ -79,6 +79,7 @@ function Header() {
           value={pokemon_buscado}
           onKeyDown={(e) => {
             if (e.key === "Enter") BuscarPokemon(pokemon_buscado);
+            window.scroll(0, 0);
           }}
           onChange={(e) => {
             setPokemonBuscado(e.target.value);
@@ -91,6 +92,7 @@ function Header() {
           variant="solid"
           onClick={() => {
             BuscarPokemon(pokemon_buscado);
+            window.scroll(0, 0);
           }}
         >
           Buscar
