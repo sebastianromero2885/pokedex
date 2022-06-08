@@ -12,14 +12,20 @@ import {
   Spacer,
 } from "@chakra-ui/react";
 import { MoonIcon, Search2Icon, SunIcon } from "@chakra-ui/icons";
+import { useMediaQuery } from '@chakra-ui/react'
+
 import MyContext from "../context/context";
 import type { Pokemon } from "../interfaces/interfaces";
 
 function Header() {
+
   const [pokemon_buscado, setPokemonBuscado] = useState<string>("");
   const { data, setPokemonEncontrado } = useContext(MyContext);
-
   const { colorMode, toggleColorMode } = useColorMode();
+
+  const [ocultardarkmode] = useMediaQuery('(min-width: 650px)')
+
+  console.log(ocultardarkmode)
 
   function BuscarPokemon(pokemon_buscado: string) {
     const resultado = data?.pokemones.filter((pokemon: Pokemon) => {
@@ -31,9 +37,16 @@ function Header() {
 
   return (
     <Box>
-      <Button onClick={toggleColorMode} position="fixed" right="10" top="7">
+      {
+        ocultardarkmode ? 
+
+        <Button onClick={toggleColorMode} position="fixed" right="20" top="7">
         {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
       </Button>
+      
+      : null
+      
+      }
 
       <Flex flexDirection="row" justifyContent="center" gap="3">
         <Heading as="h1" size="3xl" lineHeight="1.15">
