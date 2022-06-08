@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Card from "../components/Card";
 import Header from "../components/Header";
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, useColorModeValue } from "@chakra-ui/react";
 import { getPokemon } from "./api/api";
 import { useContext, useEffect } from "react";
 import MyContext from "../context/context";
@@ -9,6 +9,7 @@ import { Pokemon } from "../interfaces/interfaces";
 
 const Home: NextPage = (props) => {
   const { data, setData, pokemon_encontrado } = useContext(MyContext);
+  const headercolor = useColorModeValue("white", "gray.800");
 
   useEffect(() => {
     //Paso al contexto todos los datos que se van a usar
@@ -17,9 +18,10 @@ const Home: NextPage = (props) => {
 
   return (
     <Box>
+      
       <Box
         position="fixed"
-        bg="white"
+        bg={headercolor}
         paddingTop="10px"
         w="100%"
         boxShadow="md"
@@ -37,10 +39,16 @@ const Home: NextPage = (props) => {
         flexWrap="wrap"
         justifyContent="space-around"
         padding="10px"
-        marginTop={ {base: "230px", sm: "300px", md: "300px", lg: "300px", xl: "300px", '2xl':"300px"}}
+        marginTop={{
+          base: "230px",
+          sm: "300px",
+          md: "300px",
+          lg: "300px",
+          xl: "300px",
+          "2xl": "300px",
+        }}
       >
-        {
-        pokemon_encontrado
+        {pokemon_encontrado
           ? pokemon_encontrado.map((pokemon: Pokemon) => {
               return (
                 <Card

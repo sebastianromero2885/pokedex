@@ -7,14 +7,19 @@ import {
   Input,
   Button,
   Box,
+  useColorMode,
+  useColorModeValue,
+  Spacer,
 } from "@chakra-ui/react";
-import { Search2Icon } from "@chakra-ui/icons";
+import { MoonIcon, Search2Icon, SunIcon } from "@chakra-ui/icons";
 import MyContext from "../context/context";
 import type { Pokemon } from "../interfaces/interfaces";
 
 function Header() {
   const [pokemon_buscado, setPokemonBuscado] = useState<string>("");
   const { data, setPokemonEncontrado } = useContext(MyContext);
+
+  const { colorMode, toggleColorMode } = useColorMode();
 
   function BuscarPokemon(pokemon_buscado: string) {
     const resultado = data?.pokemones.filter((pokemon: Pokemon) => {
@@ -26,6 +31,10 @@ function Header() {
 
   return (
     <Box>
+      <Button onClick={toggleColorMode} position="fixed" right="10" top="7">
+        {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+      </Button>
+
       <Flex flexDirection="row" justifyContent="center" gap="3">
         <Heading as="h1" size="3xl" lineHeight="1.15">
           Pokédex
