@@ -5,13 +5,15 @@ import MyContext from "../context/context.js";
 import { useState } from "react";
 import type { Pokemon } from "../interfaces/interfaces";
 
-import { extendTheme,type ThemeConfig } from "@chakra-ui/react";
+import { extendTheme, type ThemeConfig } from "@chakra-ui/react";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [data, setData] = useState<Pokemon>();
-  const [pokemon_encontrado, setPokemonEncontrado] = useState<Pokemon>();
+  const [pokemones, setPokemones] = useState<Pokemon[]>([]);
+  const [pokemones_aux, setPokemonesAux] = useState<Pokemon[]>([]);
+  const [orden, setOrden] = useState<string>("asc");
+  const [atributo, setAtributo] = useState<string>("nombre");
 
-  // 2. Extend the theme to include custom colors, fonts, etc
+
   const colors = {
     light: {
       100: "#5CC7B8",
@@ -32,9 +34,8 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <MyContext.Provider
-      value={{ data, setData, pokemon_encontrado, setPokemonEncontrado }}
+      value={{ pokemones, setPokemones, pokemones_aux, setPokemonesAux, orden, setOrden, atributo, setAtributo }}
     >
-     
       <ChakraProvider theme={theme}>
       <ColorModeScript initialColorMode={theme.config.initialColorMode} />
         <Component {...pageProps} />

@@ -1,9 +1,8 @@
 import type { Pokemon } from "../../interfaces/interfaces";
 
 export async function getPokemon() {
+ let pokemones: Pokemon [] = [];
 
-  let pokemones: Array<Pokemon> = [];
-  
   let traduccion: any = {
     normal: "normal",
     fighting: "lucha",
@@ -58,7 +57,6 @@ export async function getPokemon() {
           };
 
           pokemones.push(datos_pokemon);
-
         });
 
         return pokemones;

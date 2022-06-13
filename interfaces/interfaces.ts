@@ -1,5 +1,5 @@
 export interface Pokemon {
-  id?: number;
+  id: number;
   nombre: string;
   tipo_pokemon: string;
   imagen: string;
@@ -7,3 +7,4 @@ export interface Pokemon {
   salud: number;
   defensa: number;
 }
+
